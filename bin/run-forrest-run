@@ -1,0 +1,11 @@
+#!/usr/bin/env node
+
+var cli = require('../lib/cli')
+var run = require('../lib/run')
+var opts = cli.parse()
+
+if (opts) run.scripts(opts, exit)
+
+function exit (e, r) {
+  return process.exit(r)
+}

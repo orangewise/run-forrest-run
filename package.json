@@ -1,0 +1,42 @@
+{
+  "name": "run-forrest-run",
+  "version": "0.0.3",
+  "description": "yaml config based script runner",
+  "main": "index.js",
+  "bin": {
+    "run-forrest-run": "bin/run-forrest-run"
+  },
+  "scripts": {
+    "test": "standard && tape test/*.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/orangewise/run-forrest-run.git"
+  },
+  "keywords": [
+    "run",
+    "scripts",
+    "series",
+    "parralel",
+    "yaml",
+    "run-parallel",
+    "run-series"
+  ],
+  "author": "Ronald Luitwieler",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/orangewise/run-forrest-run/issues"
+  },
+  "homepage": "https://github.com/orangewise/run-forrest-run#readme",
+  "devDependencies": {
+    "standard": "^10.0.3",
+    "tape": "^4.8.0"
+  },
+  "dependencies": {
+    "debug": "^3.1.0",
+    "json-schema-ref-parser": "^4.0.4",
+    "minimist": "^1.2.0",
+    "rimraf": "^2.6.2",
+    "run-parallel-limit": "^1.0.3"
+  }
+}

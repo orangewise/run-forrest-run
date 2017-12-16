@@ -1,0 +1,45 @@
+options:
+  retry_count: 3
+  env:
+    FOO: bar
+start:
+  name: Main
+  flow: sequential
+  steps:
+    - name: Test 1          # inline step
+      script: test/fixtures/test.sh
+      arguments:
+        - foo
+      output_file: log/test1.log
+      retry_count: 1
+      env:
+        FOO: BAR 1
+    - $ref: ./step2.yaml    # use step from a file
+    - $ref: "#/step3"       # use step defined below
+    - $ref: "#/nested-steps"
+
+step3:
+  name: Test 3
+  script: test/fixtures/test.sh
+  arguments:
+    - foo
+  output_file: log/test3.log
+  retry_count: 1
+  env:
+    FOO: BAR 3
+
+nested-steps:
+  name: Test nested steps
+  flow: parallel
+  steps:
+    - $ref: "#/nested-step-1"
+
+nested-step-1:
+  name: Nested step 1
+  script: test/fixtures/test.sh
+  arguments:
+    - foo
+  output_file: log/nested-step-1.log
+  retry_count: 1
+  env:
+    FOO: BAR 3
