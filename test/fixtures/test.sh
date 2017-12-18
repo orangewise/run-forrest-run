@@ -1,8 +1,7 @@
-#!/usr/bin/env bash
+#!/bin/bash
 
 set -e
-
-ls -al
+# sleep 3
 echo "Test"
-echo "Name: ${NAME}"
+echo "FOO: ${FOO}"
 echo "Arguments: ${@}"

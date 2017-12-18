@@ -9,16 +9,24 @@ start:
     - name: Test 1
       script: test/fixtures/test.sh
       arguments:
-        - foo
+        - foo1
       output_file: log/test1.log
       retry_count: 1
       env:
-        FOO: BAR 1
+        FOO: Bar 1
     - name: Test 2
       script: test/fixtures/test.sh
       arguments:
-        - foo
+        - foo2
       output_file: log/test2.log
       retry_count: 1
       env:
         FOO: BAR 2
+    - name: Test 3
+      script: test/fixtures/test.sh
+      arguments:
+        - foo3
+      output_file: log/test3.log
+      retry_count: 1
+      env:
+        FOO: BARTHREE
