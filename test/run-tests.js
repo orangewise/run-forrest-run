@@ -4,8 +4,8 @@ var join = require('path').join
 var fs = require('fs')
 
 test('scripts without errors', function (t) {
-  t.plan(5)
-  run.scripts({ c: join(__dirname, 'fixtures', 'scripts.yaml') }, function (e, r) {
+  t.plan(6)
+  run.scripts({ c: join(__dirname, 'fixtures', 'scripts.yaml'), v: true }, function (e, r) {
     t.equal(e, null, 'should be empty')
     t.equal(r, 0, 'exit code should be 0')
     var log = fs.readFileSync(join(process.cwd(), 'log', 'test1.log')).toString()
@@ -14,6 +14,8 @@ test('scripts without errors', function (t) {
     t.equal(log, 'Test\nFOO: BAR 2\nArguments: foo2\n', 'log 2 looks good')
     log = fs.readFileSync(join(process.cwd(), 'log', 'test3.log')).toString()
     t.equal(log, 'Test\nFOO: BARTHREE\nArguments: foo3\n', 'log 3 looks good')
+    log = fs.readFileSync(join(process.cwd(), 'log', 'test4.log')).toString()
+    t.equal(log, 'Test\nFOO: global bar\nArguments: foo4\n', 'log 4 looks good')
   })
 })
 

@@ -1,7 +1,7 @@
 options:
   retry_count: 3
   env:
-    FOO: bar
+    FOO: global bar
 start:
   name: Main
   flow: sequential
@@ -30,3 +30,9 @@ start:
       retry_count: 1
       env:
         FOO: BARTHREE
+    - name: Test 4
+      script: test/fixtures/test.sh
+      arguments:
+        - foo4
+      output_file: log/test4.log
+      retry_count: 1
