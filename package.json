@@ -1,6 +1,6 @@
 {
   "name": "run-forrest-run",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "yaml config based script runner",
   "main": "index.js",
   "bin": {
