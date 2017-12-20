@@ -8,20 +8,20 @@ test('scripts without errors', function (t) {
   run.scripts({ c: join(__dirname, 'fixtures', 'scripts.yaml'), v: false }, function (e, r) {
     t.equal(e, null, 'should be empty')
     t.equal(r, 0, 'exit code should be 0')
-    var log = fs.readFileSync(join(process.cwd(), 'log', 'test1.log')).toString()
+    var log = fs.readFileSync(join(process.cwd(), 'log', 'test1.1.log')).toString()
     t.equal(log, 'Test\nFOO: Bar 1\nArguments: foo1\n', 'log 1 looks good')
-    log = fs.readFileSync(join(process.cwd(), 'log', 'test2.log')).toString()
+    log = fs.readFileSync(join(process.cwd(), 'log', 'test2.1.log')).toString()
     t.equal(log, 'Test\nFOO: BAR 2\nArguments: foo2\n', 'log 2 looks good')
-    log = fs.readFileSync(join(process.cwd(), 'log', 'test3.log')).toString()
+    log = fs.readFileSync(join(process.cwd(), 'log', 'test3.1.log')).toString()
     t.equal(log, 'Test\nFOO: BARTHREE\nArguments: foo3\n', 'log 3 looks good')
-    log = fs.readFileSync(join(process.cwd(), 'log', 'test4.log')).toString()
+    log = fs.readFileSync(join(process.cwd(), 'log', 'test4.1.log')).toString()
     t.equal(log, 'Test\nFOO: global bar\nArguments: foo4\n', 'log 4 looks good')
   })
 })
 
 test('scripts with errors', function (t) {
   t.plan(2)
-  run.scripts({ c: join(__dirname, 'fixtures', 'scripts-with-errors.yaml') }, function (e, r) {
+  run.scripts({ c: join(__dirname, 'fixtures', 'scripts-with-errors.yaml'), v: false }, function (e, r) {
     t.equal(e, null, 'should be empty')
     t.equal(r, 1, 'exit code should be 1')
   })
