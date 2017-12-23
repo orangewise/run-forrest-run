@@ -1,10 +1,12 @@
 options:
+  # limit: 8
   retry_count: 3
   env:
     FOO: global bar
 start:
   name: Main
-  flow: sequential
+  # flow - optional, possible values: parallel/sequential
+  flow: sequential 
   steps:
     - name: Test 1
       script: test/fixtures/test.sh
