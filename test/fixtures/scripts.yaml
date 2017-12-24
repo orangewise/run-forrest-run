@@ -6,7 +6,7 @@ options:
 start:
   name: Main
   # flow - optional, possible values: parallel/sequential
-  flow: sequential 
+  flow: sequential
   steps:
     - name: Test 1
       script: test/fixtures/test.sh
@@ -37,4 +37,13 @@ start:
       arguments:
         - foo4
       output_file: log/test4.log
+      retry_count: 1
+    - name: Test 5
+      script: pwd
+      output_file: log/test5.log
+      retry_count: 1
+    - name: Test 6
+      script: pwd
+      cwd: test
+      output_file: log/test6.log
       retry_count: 1
