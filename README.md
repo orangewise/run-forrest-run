@@ -10,6 +10,12 @@ YAML config based script runner.
 
 This runners should be 100% compatible with [scripts](https://www.npmjs.com/package/scriptz).
 
+# Installation
+
+```SHELL
+npm i -g run-forrest-run
+```
+
 # Configuration
 
 The configuration exists of flows and steps. We start of by defining a
