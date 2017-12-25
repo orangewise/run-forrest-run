@@ -5,7 +5,7 @@ var fs = require('fs')
 
 test('scripts without errors', function (t) {
   t.plan(8)
-  run.scripts({ c: join(__dirname, 'fixtures', 'scripts.yaml'), v: false }, function (e, r) {
+  run.scripts({ c: join(__dirname, 'fixtures', 'scripts.yaml'), v: true }, function (e, r) {
     t.equal(e, null, 'should be empty')
     t.equal(r, 0, 'exit code should be 0')
     var log = fs.readFileSync(join(process.cwd(), 'log', 'test1.1.log')).toString()
