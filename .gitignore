@@ -1,1 +1,6 @@
 node_modules/
+examples/*.log
+examples/log
+examples/run-forrest-run
+examples/s3-zip
+examples/package-lock.json

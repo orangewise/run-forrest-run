@@ -71,10 +71,10 @@ start:
       script: ls
       arguments:
         - -lrt
-      ouput_file: ls.log
+      output_file: ls.log
     - name: Working directory
       script: pwd
-      ouput_file: pwd.log
+      output_file: pwd.log
 ```
 Run this config:
 

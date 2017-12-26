@@ -1,0 +1,34 @@
+start:
+  name: Main
+  flow: sequential
+  steps:
+    - name: cleanup log directory
+      script: ./cleanup.sh
+    - $ref: "#/npm-install"
+    - $ref: "#/clone"
+
+npm-install:
+  name: npm install
+  flow: parallel
+  steps:
+    - name: install s3-zip
+      script: npm
+      arguments:
+        - install
+        - s3-zip
+clone:
+  name: clone
+  flow: parallel
+  steps:
+    - name: git clone run-forrest-run
+      script: git
+      arguments:
+        - clone
+        - git@github.com:orangewise/run-forrest-run.git
+      output_file: log/git-clone.log
+    - name: git clone s3-zip
+      script: git
+      arguments:
+        - clone
+        - git@github.com:orangewise/s3-zip.git
+      output_file: log/s3-zip.log

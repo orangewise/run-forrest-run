@@ -7,5 +7,6 @@ var opts = cli.parse()
 if (opts) run.scripts(opts, exit)
 
 function exit (e, r) {
+  if (e) console.log(e)
   return process.exit(r)
 }
