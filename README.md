@@ -8,7 +8,9 @@ run-forrest-run
 
 YAML config based script runner.
 
-This runners should be 100% compatible with [scripts](https://www.npmjs.com/package/scriptz).
+[![run-forrest-run](https://img.youtube.com/vi/x2-MCPa_3rU/0.jpg)](https://youtu.be/x2-MCPa_3rU?t=23)
+
+run-forrest-run should be 100% compatible with [scripts](https://www.npmjs.com/package/scriptz).
 
 # Installation
 
@@ -50,14 +52,34 @@ steps: Array<Step>          # Where to write logs / directory should exist
 name: string                # Label used to keep track of script
 script: string              # Script location relative to where scriptz is being run
 output_file: string         # Where to write logs / directory should exist
-
-continue_on_error: boolean  # (default: false) # Continue even if exit code > 0
 arguments: Array<String>    # (default: []) Additional arguments
 cwd: string                 # (default: process.cwd()) CWD of the script
 env: Object                 # (default: {}) Additional environment variables
 retry_count: number         # (default: 0) Retry count if exit code > 0
 ```
 
+## Examples
+
+```yaml
+# example1.yaml
+start:
+  name: Main
+  flow: parallel
+  steps:
+    - name: File listing
+      script: ls
+      arguments:
+        - -lrt
+      ouput_file: ls.log
+    - name: Working directory
+      script: pwd
+      ouput_file: pwd.log
+```
+Run this config:
+
+```
+$ run-forrest-run -c example1.yaml
+```
 
 [npm-badge]: https://badge.fury.io/js/run-forrest-run.svg
 [npm-url]: https://badge.fury.io/js/run-forrest-run

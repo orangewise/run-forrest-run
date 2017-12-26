@@ -1,0 +1,12 @@
+start:
+  name: Main
+  flow: parallel
+  steps:
+    - name: File listing
+      script: ls
+      arguments:
+        - -lrt
+      ouput_file: ls.log
+    - name: Working directory
+      script: pwd
+      ouput_file: pwd.log
