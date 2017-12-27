@@ -4,3 +4,5 @@ Usage: run-forrest-run <options>
   -c  <config.yaml>   run config.yaml
 
   -v                  verbose
+
+Check the examples directory for some examples.

@@ -61,6 +61,8 @@ retry_count: number         # (default: 0) Retry count if exit code > 0
 ## Examples
 ### Example 1
 
+Run 2 commands in parralel.
+
 ```yaml
 # example1.yaml
 start:
@@ -71,15 +73,77 @@ start:
       script: ls
       arguments:
         - -lrt
-      output_file: ls.log
     - name: Working directory
       script: pwd
-      output_file: pwd.log
 ```
 Run this config:
 
 ```
-$ run-forrest-run -c example1.yaml
+$ run-forrest-run -c example1.yaml -v
+```
+
+### Example 2
+
+Run 3 steps in sequence, the steps itself run some commands in parralel.
+
+```yaml
+# example2.yaml
+start:
+  name: Main
+  flow: sequential
+  steps:
+    # the steps details are defined
+    # at the bottom of this file
+    - $ref: "#/cleanup"
+    - $ref: "#/npm-install"
+    - $ref: "#/clone"
+
+cleanup:
+  name: cleanup log directory
+  script: ./cleanup.sh
+
+npm-install:
+  name: npm install
+  flow: parallel
+  steps:
+    - name: install s3-zip
+      script: npm
+      arguments:
+        - install
+        - s3-zip
+    - name: install s3-files
+      script: npm
+      arguments:
+        - install
+        - s3-files
+    - name: install rotan
+      script: npm
+      arguments:
+        - install
+        - rotan
+
+clone:
+  name: clone
+  flow: parallel
+  steps:
+    - name: git clone run-forrest-run
+      script: git
+      arguments:
+        - clone
+        - git@github.com:orangewise/run-forrest-run.git
+      output_file: log/git-clone.log
+    - name: git clone s3-zip
+      script: git
+      arguments:
+        - clone
+        - git@github.com:orangewise/s3-zip.git
+      output_file: log/s3-zip.log
+```
+
+Run this config:
+
+```
+$ run-forrest-run -c example2.yaml -v
 ```
 
 [npm-badge]: https://badge.fury.io/js/run-forrest-run.svg

@@ -2,10 +2,15 @@ start:
   name: Main
   flow: sequential
   steps:
-    - name: cleanup log directory
-      script: ./cleanup.sh
+    # the steps details are defined
+    # at the bottom of this file
+    - $ref: "#/cleanup"
     - $ref: "#/npm-install"
     - $ref: "#/clone"
+
+cleanup:
+  name: cleanup log directory
+  script: ./cleanup.sh
 
 npm-install:
   name: npm install
