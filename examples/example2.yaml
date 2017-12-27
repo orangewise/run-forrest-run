@@ -16,6 +16,17 @@ npm-install:
       arguments:
         - install
         - s3-zip
+    - name: install s3-files
+      script: npm
+      arguments:
+        - install
+        - s3-files
+    - name: install rotan
+      script: npm
+      arguments:
+        - install
+        - rotan
+
 clone:
   name: clone
   flow: parallel
