@@ -20,5 +20,3 @@ start:
         - foo
       output_file: log/test2.log
       retry_count: 2
-      env:
-        FOO: BAR 2

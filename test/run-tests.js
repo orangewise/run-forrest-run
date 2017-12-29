@@ -55,3 +55,13 @@ test('invalid yaml', function (t) {
     t.notEqual(e, null, 'invalid yaml should return an error')
   })
 })
+
+test('name of output file', function (t) {
+  t.plan(3)
+  var log = run.logFile({ name: 'step name', output_file: 'step.log' }, 1)
+  t.equal(log, 'step.1.log', 'output file for try 1')
+  log = run.logFile({ name: 'step name', output_file: 'step.log' }, 2)
+  t.equal(log, 'step.2.log', 'output file for try 2')
+  log = run.logFile({ name: 'step name' }, 1)
+  t.equal(log, 'step name.1.log', 'output file defaults to step name')
+})
