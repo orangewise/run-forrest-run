@@ -7,7 +7,8 @@
     "run-forrest-run": "bin/run-forrest-run"
   },
   "scripts": {
-    "test": "standard && tape test/*.js"
+    "test": "standard && nyc tape test/*.js",
+    "coverage": "nyc report --reporter=text-lcov | coveralls"
   },
   "repository": {
     "type": "git",
@@ -29,6 +30,7 @@
   },
   "homepage": "https://github.com/orangewise/run-forrest-run#readme",
   "devDependencies": {
+    "nyc": "^11.4.1",
     "standard": "^10.0.3",
     "tape": "^4.8.0"
   },

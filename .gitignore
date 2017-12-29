@@ -1,4 +1,5 @@
 node_modules/
+.nyc_output/
 examples/*.log
 examples/log
 examples/run-forrest-run
