@@ -5,7 +5,7 @@ var fs = require('fs')
 
 test('scripts without errors', function (t) {
   t.plan(8)
-  run.scripts({ c: join(__dirname, 'fixtures', 'scripts.yaml'), v: true }, function (e, r) {
+  run.scripts({ c: join(__dirname, 'fixtures', 'scripts.yaml'), v: false }, function (e, r) {
     t.equal(e, null, 'should be empty')
     t.equal(r, 0, 'exit code should be 0')
     var log = fs.readFileSync(join(process.cwd(), 'log', 'test1.1.log')).toString()
@@ -29,14 +29,22 @@ test('scripts with errors', function (t) {
   t.plan(2)
   run.scripts({ c: join(__dirname, 'fixtures', 'scripts-with-errors.yaml'), v: false }, function (e, r) {
     t.equal(e, null, 'should be empty')
-    t.equal(r, 1, 'exit code should be 1')
+    t.notEqual(r, 0, 'exit code should be non-zero')
   })
 })
 
 test('scripts with nested steps', function (t) {
   t.plan(2)
-  run.scripts({ c: join(__dirname, 'fixtures', 'scripts-with-nested-steps.yaml') }, function (e, r) {
+  run.scripts({ c: join(__dirname, 'fixtures', 'scripts-with-nested-steps.yaml'), v: true }, function (e, r) {
     t.equal(e, null, 'should be empty')
-    t.equal(r, 0, 'exit code should be 0')
+    t.equal(r, 0, 'exit code should be zero')
+  })
+})
+
+test('scripts with nested errors', function (t) {
+  t.plan(2)
+  run.scripts({ c: join(__dirname, 'fixtures', 'scripts-with-nested-errors.yaml'), v: false }, function (e, r) {
+    t.equal(e, null, 'should be empty')
+    t.notEqual(r, 0, 'exit code should be non-zero')
   })
 })

@@ -1,0 +1,31 @@
+options:
+  retry_count: 3
+  env:
+    FOO: bar
+start:
+  name: Main
+  flow: sequential
+  steps:
+    - $ref: "#/one"
+
+one:
+  name: One
+  flow: parallel
+  steps:
+    - name: Test 1
+      script: test/fixtures/test.sh
+      arguments:
+        - foo
+      output_file: log/test1.log
+      retry_count: 1
+      env:
+        FOO: BAR 1
+    - name: Test 2
+      script: test/fixtures/error.sh
+      arguments:
+        - foo
+      output_file: log/test2.log
+      retry_count: 2
+      env:
+        FOO: BAR 2
+

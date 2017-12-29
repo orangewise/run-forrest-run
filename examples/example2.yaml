@@ -1,3 +1,5 @@
+options:
+  limit: 8
 start:
   name: Main
   flow: sequential
@@ -16,21 +18,46 @@ npm-install:
   name: npm install
   flow: parallel
   steps:
-    - name: install s3-zip
+    - name: 1 install s3-zip
       script: npm
       arguments:
         - install
         - s3-zip
-    - name: install s3-files
+    - name: 2 install s3-files
       script: npm
       arguments:
         - install
         - s3-files
-    - name: install rotan
+    - name: 3 install rotan
       script: npm
       arguments:
         - install
         - rotan
+    - name: 4 install policify
+      script: npm
+      arguments:
+        - install
+        - policify
+    - name: 5 install openapi-utils-path-for-uri
+      script: npm
+      arguments:
+        - install
+        - openapi-utils-path-for-uri
+    - name: 6 install openapi-utils-schema-from-api
+      script: npm
+      arguments:
+        - install
+        - openapi-utils-schema-from-api
+    - name: 7 install openapi-utils-param-to-schema
+      script: npm
+      arguments:
+        - install
+        - openapi-utils-param-to-schema
+    - name: 8 install openapi-utils-defaults
+      script: npm
+      arguments:
+        - install
+        - openapi-utils-defaults
 
 clone:
   name: clone

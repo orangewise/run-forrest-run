@@ -1,5 +1,10 @@
 {
   "dependencies": {
+    "openapi-utils-defaults": "0.0.7",
+    "openapi-utils-param-to-schema": "0.0.9",
+    "openapi-utils-path-for-uri": "0.0.8",
+    "openapi-utils-schema-from-api": "0.0.5",
+    "policify": "0.0.13",
     "rotan": "^1.1.7",
     "s3-files": "^1.0.2",
     "s3-zip": "^1.0.0"
