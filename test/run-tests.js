@@ -48,3 +48,10 @@ test('scripts with nested errors', function (t) {
     t.notEqual(r, 0, 'exit code should be non-zero')
   })
 })
+
+test('invalid yaml', function (t) {
+  t.plan(1)
+  run.scripts({ c: 'invalid.yaml' }, function (e) {
+    t.notEqual(e, null, 'invalid yaml should return an error')
+  })
+})
