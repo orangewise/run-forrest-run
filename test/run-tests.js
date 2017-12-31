@@ -21,7 +21,7 @@ test('scripts without errors', function (t) {
     t.equal(log, expected, 'log 5 looks good')
     log = fs.readFileSync(join(process.cwd(), 'log', 'test6.1.log')).toString()
     expected = `${join(process.cwd(), 'test')}\n`
-    t.equal(log, expected, 'log 5 looks good')
+    t.equal(log, expected, 'log 6 looks good')
   })
 })
 
@@ -35,7 +35,7 @@ test('scripts with errors', function (t) {
 
 test('scripts with nested steps', function (t) {
   t.plan(2)
-  run.scripts({ c: join(__dirname, 'fixtures', 'scripts-with-nested-steps.yaml'), v: true }, function (e, r) {
+  run.scripts({ c: join(__dirname, 'fixtures', 'scripts-with-nested-steps.yaml'), v: false }, function (e, r) {
     t.equal(e, null, 'should be empty')
     t.equal(r, 0, 'exit code should be zero')
   })
