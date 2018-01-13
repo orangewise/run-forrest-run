@@ -11,7 +11,7 @@ YAML config based script runner.
 
 [![run-forrest-run](https://img.youtube.com/vi/x2-MCPa_3rU/0.jpg)](https://youtu.be/x2-MCPa_3rU?t=23)
 
-run-forrest-run should be 100% compatible with [scripts](https://www.npmjs.com/package/scriptz).
+run-forrest-run should be 100% compatible with [scriptz](https://www.npmjs.com/package/scriptz).
 
 # Installation
 
