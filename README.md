@@ -28,6 +28,7 @@ couple of options and the start flow.
 options:
   retry_count: number     # (default: 0) Retry count if exit code > 0
   env: Object             # (default: {}) Additional environment variables
+  output_folder: string   # (default: '') A folder for your logs
 start:
   ...
 ```
@@ -42,7 +43,7 @@ If it is also defined on the step level, then the object will be merged.
 # Required values
 name: string                # Label
 flow: string                # Type of flow 'sequential' or 'parallel'
-steps: Array<Step>          # Where to write logs / directory should exist
+steps: Array<Step>          # Step definitions
 ```
 
 
@@ -52,7 +53,7 @@ steps: Array<Step>          # Where to write logs / directory should exist
 # Required values
 name: string                # Label used to keep track of script
 script: string              # Script location relative to where scriptz is being run
-output_file: string         # Where to write logs / directory should exist
+output_file: string         # Where to write logs, can be prefixed with an output_folder
 arguments: Array<String>    # (default: []) Additional arguments
 cwd: string                 # (default: process.cwd()) CWD of the script
 env: Object                 # (default: {}) Additional environment variables

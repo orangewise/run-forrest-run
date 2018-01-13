@@ -19,7 +19,7 @@ test('scripts without errors', function (t) {
     log = fs.readFileSync(join(process.cwd(), 'log', 'test5.1.log')).toString()
     var expected = `${process.cwd()}\n`
     t.equal(log, expected, 'log 5 looks good')
-    log = fs.readFileSync(join(process.cwd(), 'log', 'test6.1.log')).toString()
+    log = fs.readFileSync(join(process.cwd(), 'log', 'sub', 'test6.1.log')).toString()
     expected = `${join(process.cwd(), 'test')}\n`
     t.equal(log, expected, 'log 6 looks good')
   })
@@ -57,11 +57,13 @@ test('invalid yaml', function (t) {
 })
 
 test('name of output file', function (t) {
-  t.plan(3)
-  var log = run.logFile({ name: 'step name', output_file: 'step.log' }, 1)
+  t.plan(4)
+  var log = run.logFile({ name: 'step name', output_file: 'step.log' }, { count: 1 })
   t.equal(log, 'step.1.log', 'output file for try 1')
-  log = run.logFile({ name: 'step name', output_file: 'step.log' }, 2)
+  log = run.logFile({ name: 'step name', output_file: 'step.log' }, { count: 2 })
   t.equal(log, 'step.2.log', 'output file for try 2')
-  log = run.logFile({ name: 'step name' }, 1)
+  log = run.logFile({ name: 'step name' }, { count: 1 })
   t.equal(log, 'step name.1.log', 'output file defaults to step name')
+  log = run.logFile({ name: 'step name' }, { count: 1, output_folder: 'some_folder' })
+  t.equal(log, 'some_folder/step name.1.log', 'output file defaults to step name')
 })

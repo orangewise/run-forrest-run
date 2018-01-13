@@ -1,5 +1,6 @@
 options:
   # limit: 8
+  output_folder: log
   retry_count: 3
   env:
     FOO: global bar
@@ -12,7 +13,7 @@ start:
       script: test/fixtures/test.sh
       arguments:
         - foo1
-      output_file: log/test1.log
+      output_file: test1.log
       retry_count: 1
       env:
         FOO: Bar 1
@@ -20,7 +21,7 @@ start:
       script: test/fixtures/test.sh
       arguments:
         - foo2
-      output_file: log/test2.log
+      output_file: test2.log
       retry_count: 1
       env:
         FOO: BAR 2
@@ -28,7 +29,7 @@ start:
       script: test/fixtures/test.sh
       arguments:
         - foo3
-      output_file: log/test3.log
+      output_file: test3.log
       retry_count: 1
       env:
         FOO: BARTHREE
@@ -38,14 +39,14 @@ start:
       # cwd: test/fixtures
       arguments:
         - foo4
-      output_file: log/test4.log
+      output_file: test4.log
       retry_count: 1
     - name: Test 5
       script: pwd
-      output_file: log/test5.log
+      output_file: test5.log
       retry_count: 1
     - name: Test 6
       script: pwd
       cwd: test
-      output_file: log/test6.log
+      output_file: sub/test6.log
       retry_count: 1
